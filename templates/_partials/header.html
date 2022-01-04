@@ -1,0 +1,38 @@
+{%load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'todo/css/header.css' %}">
+<div class="menu_d">
+  <div class="container">
+    <a href="{% url 'home' %}" class="headeritem">
+     <img class="logo" src= "{% static 'todo/img/Logo.png' %}" />
+    </a>
+
+    
+    <div class="rightitem">
+      <a href="{% url 'create_todo' %}" class="button">Create Todo</a>
+    	{% if request.user.is_autnenticated %}
+      <div class="ui simple dropdown item">
+         {{request.user.username}} <i class="dropdown icon"></i>
+        <div class="menu">
+        <form class="ui large form" method="post" action={% url 'logout_user' %}>
+
+      <div class="username">
+         User X
+        <form class="button" method="post" action="">
+         <input class="signout"
+              type="submit"
+              value="Sign out"
+            />
+          </form>
+      </div>
+
+      {% else %}
+      
+      <a href="{% url 'login' %}" class="button">Login</a>
+
+      <a href="{% url 'register' %}" class="button">Register</a>
+
+
+     {% endif %}
+    </div>
+  </div>
+</div>
