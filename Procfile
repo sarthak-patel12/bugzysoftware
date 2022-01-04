@@ -1,1 +1,1 @@
-web: gunicorn todosite.wsgi
+web: gunicorn todosite.wsgi  --log-file -
