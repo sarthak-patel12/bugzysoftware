@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
-from django.utils.encoding import force_bytes,force_str,force_text, DjangoUnicodeDecodeError
+from django.utils.encoding import force_bytes,force_str,force_str, DjangoUnicodeDecodeError
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from django.conf import settings
@@ -115,7 +115,7 @@ def logout_user(request):
 def activate_user(request,uidb64,token):
 
 	try:
-		uid=force_text(urlsafe_base64_decode(uidb64))
+		uid=force_str(urlsafe_base64_decode(uidb64))
 
 		user = User.objects.get(pk=uid)
 
