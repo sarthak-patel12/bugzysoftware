@@ -11,7 +11,7 @@ uuid==1.30
 backports.entry-points-selectable==1.1.0
 distlib==0.3.3
 dj-database-url==0.5.0
-Django==3.2.8
+Django
 django-heroku==0.3.1
 filelock==3.3.1
 gunicorn==20.1.0
