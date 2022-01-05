@@ -7,7 +7,7 @@ class Todo(TrackingModel):
 	user_id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=225)
 	is_primary = models.BooleanField(default=False)
-	#owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+	owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
