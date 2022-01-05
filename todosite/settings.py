@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*','bugzysoftware.herokuapp.com','127.0.0.1']
 
 AUTH_USER_MODEL="authentication.User"
 # Application definition
+LOGIN_URL = "/login"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
