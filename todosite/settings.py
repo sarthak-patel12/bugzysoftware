@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-6jln_=j$_$366cmtak4z!=-8hr-0%w04dzeahng*&p3_z=gciv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','bugzysoftware.herokuapp.com','127.0.0.1']
 
 AUTH_USER_MODEL="authentication.User"
 # Application definition
@@ -132,7 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'todosite/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'todosite/static/')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
