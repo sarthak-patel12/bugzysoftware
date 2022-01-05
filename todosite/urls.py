@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo.views import index,create_todo,todo_details,todo_delete,todo_edit
-from authentication.views import register,login_user,logout_user
+from authentication.views import register,login_user,logout_user,activate_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('todo/<user_id>',todo_details, name ='todo_details'),
     path('todo_delete/<user_id>',todo_delete, name ='todo_delete'),
     path('todo_edit/<user_id>',todo_edit, name ='todo_edit'),
+    path('activate_user/<uidb64>/<token>',activate_user,name='activate_user'),
 ]

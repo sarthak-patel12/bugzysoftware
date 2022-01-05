@@ -7,8 +7,8 @@
 
 .container{
   	color: black;
- 	text-align: center;
-  	padding: 12px;
+ 		text-align: center;
+ 		padding: 12px;
   	text-decoration: none;
   	font-size: 18px;
   	line-height: 25px;
@@ -20,9 +20,7 @@
 	float: left;
 }
 
-.logo{
-	height: 50px;
-}
+
 
 .rightitem{
 	padding: auto;
