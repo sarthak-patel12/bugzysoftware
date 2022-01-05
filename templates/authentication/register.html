@@ -1,9 +1,21 @@
 {% extends '_partials/base.html' %}
 {% load static %}
+{% block title %}
 
+Register
+
+{% endblock %}
 {% block content %}
 
-	<h3>Register</h3>
-	
+	<h3>Register Person</h3><br>
+	{% include '_partials/messages.html' %}
+	<form method="POST" action="{% url 'register' %}">
+		{% csrf_token %}
+		<input type="text" name="username" value="{{data.username}}" placeholder="Username" /><br><br>
+		<input type="text" name="email" value="{{data.email}}" placeholder="E-mail address" /><br><br>
+		<input type="password" name="password" placeholder="Password" /><br><br>
+		<input type="password" name="password2" placeholder="Repeat Password" /><br><br>
+		<button>Submit</button>
+	</form>
 
 {% endblock content %}

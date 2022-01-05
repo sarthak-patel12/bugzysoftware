@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+<div>
+{% include '_partials/messages.html' %}
 	<h3>People Registered</h3>
 		<br>
 		<br>
@@ -10,7 +12,7 @@
 		{% for t in todos %}
 		{{t.name }}
 		<a href="{% url 'todo_details' t.pk%}" >See Details</a>
-		<a href="">Edit Details</a>
+		<a href="{% url 'todo_edit' t.pk%}">Edit Details</a>
 		<br><br>
 
 		{% endfor %}
@@ -18,6 +20,6 @@
 	<div>
 		No person registered yet, to register a person please click <a href="{%url 'create_todo'%}">here</a>
 	</div>
-
+<div>
 	{% endif %}
 {% endblock content %}

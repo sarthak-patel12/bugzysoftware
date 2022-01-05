@@ -1,9 +1,21 @@
 {% extends '_partials/base.html' %}
 {% load static %}
+{% block title %}
 
+Login
+
+{% endblock %}
 {% block content %}
 
 	<h3>Login</h3>
-	
+	{% include '_partials/messages.html' %}
+	<form method="POST" action="{% url 'login' %}">
+		{% csrf_token %}
+		<input type="text" required name="username" value="{{data.username}}" placeholder="Username" /><br><br>
+		<input type="password" required name="password" placeholder="Password" /><br><br>
+		<button>Login</button>		
+	</form>
+		
+
 
 {% endblock content %}
