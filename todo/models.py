@@ -7,6 +7,7 @@ class Todo(TrackingModel):
 	user_id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=225)
 	is_primary = models.BooleanField(default=False)
+	profile_pic = models.ImageField(null = True, blank = True)
 	owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
 	def __str__(self):

@@ -7,5 +7,6 @@ class TodoForm(forms.ModelForm):
 
 		fields=[
 		'name',
-		'is_primary'
+		'is_primary',
+		'profile_pic'
 		]

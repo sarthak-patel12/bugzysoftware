@@ -10,7 +10,7 @@ Person: {{todo.name}}
 <div>
 	<h3>Edit Person</h3>
 	
-	<form method="POST" action="{% url 'todo_edit' todo.pk%}">
+	<form method="POST" action="{% url 'todo_edit' todo.pk%}" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{form.as_p}}
 	<input type="submit" value="Save">

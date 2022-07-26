@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from todo.views import index,create_todo,todo_details,todo_delete,todo_edit
 from authentication.views import register,login_user,logout_user,activate_user
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,3 +32,5 @@ urlpatterns = [
     path('todo_edit/<user_id>',todo_edit, name ='todo_edit'),
     path('activate_user/<uidb64>/<token>',activate_user,name='activate_user'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

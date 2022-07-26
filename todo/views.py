@@ -20,6 +20,7 @@ def create_todo(request):
 	context = {'form':form}
 	print("i am here 1")
 	if request.method == "POST":
+
 		print("i am here 2")
 		name = request.POST.get('name')
 		is_primary = request.POST.get('is_primary',False)
@@ -28,6 +29,8 @@ def create_todo(request):
 		todo.name = name
 		todo.is_primary = True if is_primary == "on" else False
 		todo.owner = request.user
+		files = request.FILES
+		todo.profile_pic= files.get('profile_pic')
 		todo.save()
 
 		messages.add_message(request,messages.SUCCESS,"Person Created Successfully")
@@ -37,6 +40,7 @@ def create_todo(request):
 @login_required
 def todo_details(request, user_id):
 	todo = get_object_or_404(Todo,pk=user_id)
+	print(todo.profile_pic.url)
 	context = {'todo':todo}
 	return render(request,'todo/todo-details.html',context)
 
@@ -63,6 +67,8 @@ def todo_edit(request, user_id):
 
 			todo.name = name
 			todo.is_primary = True if is_primary == "on" else False
+			files = request.FILES
+			todo.profile_pic= files.get('profile_pic')
 			todo.save()
 			messages.add_message(request,messages.SUCCESS,"Person Updated Successfully")
 			return HttpResponseRedirect(reverse("todo_details",kwargs={"user_id":todo.pk}))

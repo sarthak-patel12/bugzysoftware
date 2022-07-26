@@ -134,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'todosite/static/')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
@@ -142,11 +144,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # Activate Django-Heroku.
 #django_heroku.settings(locals())
-EMAIL_FROM_USER = 'info.significativo@gmail.com'
+EMAIL_FROM_USER = 'info.significative@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'info.significative@gmail.com'
-EMAIL_HOST_PASSWORD = 'zxisujifxubdgtmi'
+EMAIL_HOST_PASSWORD = 'Bugzy@03'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587

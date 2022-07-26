@@ -9,9 +9,11 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes,force_str,force_str, DjangoUnicodeDecodeError
 from .utils import generate_token
-from django.core.mail import EmailMessage
+#from django.core.mail import EmailMessage
 from django.conf import settings
 import threading 
+import smtplib
+from email.message import EmailMessage
 
 class EmailThread(threading.Thread):
 
@@ -24,10 +26,19 @@ class EmailThread(threading.Thread):
 
 def send_action_email(user,request):
 	current_site = get_current_site(request)
-	email_subject = 'Activate your account'
+	'''email_subject = 'Activate your account'
 	email_body = render_to_string('authentication/activate.html',{'user':user,'domain':current_site,'uid':urlsafe_base64_encode(force_bytes(user.pk)),'token':generate_token.make_token(user)})
-	email = EmailMessage(subject=email_subject, body=email_body,from_email=settings.EMAIL_FROM_USER,to=[user.email])
-	EmailThread(email).start()
+	email = EmailMessage(Subject=email_subject, set_content=email_body,From=settings.EMAIL_FROM_USER,To=[user.email])
+	#EmailThread(email).start()'''
+	
+	msg = EmailMessage()
+	msg['Subject'] = 'Activate your account'
+	msg['From'] = 'info.significativo@gmail.com'
+	msg['To'] = [user.email]
+	msg.set_content(render_to_string('authentication/activate.html',{'user':user,'domain':current_site,'uid':urlsafe_base64_encode(force_bytes(user.pk)),'token':generate_token.make_token(user)}))
+	with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+		    smtp.login('info.significativo@gmail.com', 'zxisujifxubdgtmi')
+		    smtp.send_message(msg)
 
 # Create your views here.
 def register(request):

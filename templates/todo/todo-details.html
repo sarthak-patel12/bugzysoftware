@@ -9,7 +9,11 @@ Person: {{todo.name}}
 {% include '_partials/messages.html' %}
 <div>
 	<h3>Person Details</h3><br><br>
-
+	Profile Pic : 
+	<div>
+		<img src="{{todo.profile_pic.url}}">
+	</div>
+	{{request.user.todo.profile_pic.url}}
 	Name = {{todo.name}}<br><br>
 	Type = 
 	{% if todo.is_primary %}
