@@ -105,12 +105,14 @@ def login_user(request):
 		password = request.POST.get('password')
 		user = authenticate(request,username=username,password=password)
 
-		if not user.is_email_varifird:
-			messages.add_message(request,messages.ERROR,"Email not verified! Please check you email inbox to verify")
-			return render(request,'authentication/login.html',context)
+	
 
 		if not user:
 			messages.add_message(request,messages.ERROR,"Invalid Credentials")
+			return render(request,'authentication/login.html',context)
+
+		if not user.is_email_varifird:
+			messages.add_message(request,messages.ERROR,"Email not verified! Please check you email inbox to verify")
 			return render(request,'authentication/login.html',context)
 		login(request,user)
 		messages.add_message(request,messages.SUCCESS,f'Welcome {user.username}')
